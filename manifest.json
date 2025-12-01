@@ -1,0 +1,9 @@
+{
+  "name": "Calculadora Click",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Esta extensão serve para realizar cálculos simples.",
+  "action": {
+    "default_popup": "index.html"
+    }
+  }
