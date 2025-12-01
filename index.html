@@ -7,6 +7,51 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div class="container-pai">
+        <header class="cabecalho">
+          <input type="text" name="text" id="input-text" class="input-text" maxlength="500" placeholder="Digite seu cáluclo aqui" required>
+          <br>
+          <textarea name="result" id="result" class="result" placeholder="Resultado"></textarea>
+        </header> 
+        
+        <div class="container-button">
+            <div class="rowCalculations">
+              <button type="button" class="btn" id="btnSoma">+</button>
+              <button type="button" class="btn" id="btnSubtracao">-</button>
+              <button type="button" class="btn" id="btnMultiplicacao">x</button>
+              <button type="button" class="btn" id="btnDivisao">÷</button>
+            </div>
+
+            <div class="rowNumbers">
+              <div class="firstRow">
+                <button type="button">1</button>
+                <button type="button">2</button>
+                <button type="button">3</button>
+                <button type="button">DEL</button>
+              </div>
+            
+
+            <div class="secondRow">
+              <button type="button">4</button>
+              <button type="button">5</button>
+              <button type="button">6</button>
+              <button type="button">=</button>
+            </div>
+
+            <div class="secondRow">
+              <button type="button">7</button>
+              <button type="button">8</button>
+              <button type="button">9</button>
+              <button type="button">0</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="rodape">
+      <button type="button" id="configIcon"><img src="img/config_Icon.png" alt="ícone de Engrenagem"></button>
+      <button type="button" id="logoIcon"><img src="img/Logo.png" alt="Logotipo de Olho"></button>
+      <button type="button" id="themeIcon"><img src="img/theme_Icon.png" alt="ícone de um Sol e uma Lua"></button>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
