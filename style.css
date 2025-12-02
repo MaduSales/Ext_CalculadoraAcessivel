@@ -1,3 +1,22 @@
+:root{
+  --bg-whiteStandard: #fff;
+  --bg-header-standard: #D9D9D9;
+  --bg-inputs-standard: #BABABA;
+  --bg-calcButtons: #0099B8;
+  --bg-numberStandard: #C2C2C2;
+  --bg-deleteButton: #D85F1A;
+  --bg-equalButton: #56B43D;
+  --fc-buttonsStandard: #000;
+
+
+  --bg-darkStandard: #424242;
+  --bg-header-dark: #575656;
+  --bg-inputs-dark: #222222;
+  --bg-numbersDark: #9D9B9B;
+  --fc-buttonsDark: #fff;
+  --bg-footerButtons: #7A7A93;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,15 +28,22 @@
 .container-pai {
   width: 280px;
   height: 410px;
-  background: #fff;
+  background-color: var(--bg-whiteStandard);
   display: flex;
-  flex-direction: column;
-  border: 1px solid black;  
+  flex-direction: column;  
+}
+
+.container-pai.dark{
+  background-color: var(--bg-darkStandard);
 }
 
 .cabecalho{
-    background-color: #D9D9D9;
+    background-color: var(--bg-header-standard);
     padding: 6px 8px;
+}
+
+.cabecalho.dark{
+  background-color: var(--bg-header-dark);
 }
 
 .cabecalho input,
@@ -26,8 +52,13 @@
   padding: 6px 8px;
   font-size: 15px;
   border: none;
-  background: #BABABA;
+  background-color: var(--bg-inputs-standard);
   resize: none;
+}
+
+.cabecalho input.dark,
+.cabecalho textarea.dark{
+  background-color: var(--bg-inputs-dark);
 }
 
 .cabecalho input {
@@ -52,10 +83,15 @@
   height: 40px;
   border-radius: 50%;
   border: none;
-  background: #0099B8;
+  background-color: var(--bg-calcButtons);
   font-size: 25px;
   font-weight: 700;
   cursor: pointer;
+  color: var(--fc-buttonsStandard);
+}
+
+.rowCalculations button.dark{
+  color: var(--fc-buttonsDark);
 }
 
 .numbers-grid {
@@ -63,34 +99,44 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
   margin-top: 10px;
-  background-color: #D9D9D9;
+  background-color: var(--bg-header-standard);
   padding: 8px;
   margin: 15px 30px 0px 30px;
+}
+
+.numbers-grid.dark{
+  background-color: var(--bg-inputs-dark);
 }
 
 .numbers-grid button {
   height: 40px;
   border: none;
-  background: #C2C2C2;
+  background-color: var(--bg-numberStandard);
   font-weight: 800;
   font-size: 20px;
   cursor: pointer;
+  color: var(--fc-buttonsStandard);
+}
+
+.numbers-grid button.dark{
+  background-color: var(--bg-numbersDark);
+  color: var(--fc-buttonsDark);
 }
 
 .numbers-grid .del {
-  background: #D85F1A;
+  background-color: var(--bg-deleteButton);
   font-weight: 700;
 }
 
 .numbers-grid .equal {
-  background: #56B43D;
+  background-color: var(--bg-equalButton);
   font-weight: 700;
 }
 
 .rodape {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 13px;
   padding: 0px 30px 0px 30px;
 }
 
@@ -99,7 +145,12 @@
   height: 30px;
   border-radius: 100%;
   border: none;
-  background: #D9D9D9;
+  background-color: var(--bg-header-standard);
+  cursor: pointer;
+}
+
+.rodape button.dark{
+  background-color: var(--bg-footerButtons);
 }
 
 .rodape img {
@@ -111,13 +162,31 @@
     width: 35px;
 }
 
+.dark .rodape .logo img{
+  content: url("img/Logo-dark.png");
+}
+
+.dark #configIcon img {
+  content: url("img/config_Icon_dark.png");
+}
+
+.dark #themeIcon img {
+  content: url("img/theme_Icon_dark.png");
+}
+
 .marca {
   text-align: center;
   font-weight: 800;
-  font-size: 12px;
-  background-color: #C2C2C2;
+  font-size: 15px;
+  background-color: var(--bg-numberStandard);
+  color: var(--fc-buttonsStandard);
+}
+
+.marca.dark{
+  background-color: var(--bg-header-dark);
+  color: var(--fc-buttonsDark);
 }
 
 span {
-    color: #0099B8;
+    color: var(--bg-calcButtons);
 }
