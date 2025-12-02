@@ -33,7 +33,7 @@
   flex-direction: column;  
 }
 
-.container-pai.dark{
+.dark .container-pai{
   background-color: var(--bg-darkStandard);
 }
 
@@ -42,7 +42,7 @@
     padding: 6px 8px;
 }
 
-.cabecalho.dark{
+.dark .cabecalho{
   background-color: var(--bg-header-dark);
 }
 
@@ -56,8 +56,8 @@
   resize: none;
 }
 
-.cabecalho input.dark,
-.cabecalho textarea.dark{
+.dark .cabecalho input,
+.dark .cabecalho textarea{
   background-color: var(--bg-inputs-dark);
 }
 
@@ -90,7 +90,7 @@
   color: var(--fc-buttonsStandard);
 }
 
-.rowCalculations button.dark{
+.dark .rowCalculations button{
   color: var(--fc-buttonsDark);
 }
 
@@ -104,7 +104,7 @@
   margin: 15px 30px 0px 30px;
 }
 
-.numbers-grid.dark{
+.dark .numbers-grid{
   background-color: var(--bg-inputs-dark);
 }
 
@@ -118,7 +118,7 @@
   color: var(--fc-buttonsStandard);
 }
 
-.numbers-grid button.dark{
+.dark .numbers-grid button{
   background-color: var(--bg-numbersDark);
   color: var(--fc-buttonsDark);
 }
@@ -131,6 +131,14 @@
 .numbers-grid .equal {
   background-color: var(--bg-equalButton);
   font-weight: 700;
+}
+
+.dark .numbers-grid .del{
+ background-color: var(--bg-deleteButton);
+}
+
+.dark .numbers-grid .equal{
+  background-color: var(--bg-equalButton);
 }
 
 .rodape {
@@ -149,7 +157,7 @@
   cursor: pointer;
 }
 
-.rodape button.dark{
+.dark .rodape button{
   background-color: var(--bg-footerButtons);
 }
 
@@ -182,7 +190,7 @@
   color: var(--fc-buttonsStandard);
 }
 
-.marca.dark{
+.dark .marca{
   background-color: var(--bg-header-dark);
   color: var(--fc-buttonsDark);
 }
