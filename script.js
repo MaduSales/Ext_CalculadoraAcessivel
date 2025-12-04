@@ -11,7 +11,9 @@ const numberButtons = document.querySelectorAll(".numbers-grid button:not(.del):
 const operationButtons = document.querySelectorAll(".rowCalculations button");
 const deleteButton = document.querySelector(".numbers-grid .del");
 const equalButton = document.querySelector(".numbers-grid .equal");
-
+const configButton = document.getElementById("configIcon");
+const overlayConfig = document.getElementById("overlayConfig");
+const closeConfig = document.getElementById("closeConfig");
 
 function appendToInput(char) {
   inputText.value += char;
@@ -58,4 +60,14 @@ equalButton.addEventListener("click", () => {
   } catch (error) {
     resultText.value = "Erro";
   }
+});
+
+// ABRIR MENU
+configButton.addEventListener("click", () => {
+  overlayConfig.classList.add("active");
+});
+
+// FECHAR NO X
+closeConfig.addEventListener("click", () => {
+  overlayConfig.classList.remove("active");
 });

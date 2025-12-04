@@ -1,54 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Calculadora Click</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="container-pai">
-        <header class="cabecalho">
-          <input type="text" name="text" id="input-text" class="input-text" maxlength="500" placeholder="Digite seu cálculo aqui" required>
-          <textarea name="result" id="result" class="result" placeholder="Resultado" readonly></textarea>
-        </header> 
-        
-        <div class="container-button">
-            <div class="rowCalculations">
-              <button type="button" class="op" id="btnSoma">+</button>
-              <button type="button" class="op" id="btnSubtracao">-</button>
-              <button type="button" class="op" id="btnMultiplicacao">x</button>
-              <button type="button" class="op" id="btnDivisao">÷</button>
-            </div>
 
-            <div class="numbers-grid">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-              <button class="del">DEL</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <title>Calculadora Click</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-              <button>4</button>
-              <button>5</button>
-              <button>6</button>
-              <button class="equal">=</button>
+<body>
+  <div class="container-pai">
+    <header class="cabecalho">
+      <input type="text" name="text" id="input-text" class="input-text" maxlength="500"
+        placeholder="Digite seu cálculo aqui" required>
+      <textarea name="result" id="result" class="result" placeholder="Resultado" readonly></textarea>
+    </header>
 
-              <button>7</button>
-              <button>8</button>
-              <button>9</button>
-              <button>0</button>
-            </div>
-          </div>
+    <div class="container-button">
+      <div class="rowCalculations">
+        <button type="button" class="op" id="btnSoma">+</button>
+        <button type="button" class="op" id="btnSubtracao">-</button>
+        <button type="button" class="op" id="btnMultiplicacao">x</button>
+        <button type="button" class="op" id="btnDivisao">÷</button>
+      </div>
+
+      <div class="numbers-grid">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="del">DEL</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="equal">=</button>
+
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>0</button>
+      </div>
+    </div>
 
     <footer class="rodape">
-      <button type="button" class="btn" id="configIcon"><img src="img/config_Icon_standard.png" alt="ícone de Engrenagem"></button>
+      <button type="button" class="btn" id="configIcon"><img src="img/config_Icon_standard.png"
+          alt="ícone de Engrenagem"></button>
       <div class="logo"><img src="img/Logo-standard.png" alt="Logotipo de Olho"></div>
-      <button type="button" class="btn" id="themeIcon"><img src="img/theme_Icon_standard.png" alt="ícone de um Sol e uma Lua"></button>
+      <button type="button" class="btn" id="themeIcon"><img src="img/theme_Icon_standard.png"
+          alt="ícone de um Sol e uma Lua"></button>
     </footer>
 
     <p class="marca">Cl<span>i</span>ck</p>
-    <script src="script.js"></script>
-  </body>
+
+    <div class="overlay-config" id="overlayConfig">
+
+      <div class="config-panel">
+
+        <button class="close-x" id="closeConfig">×</button>
+
+        <h2><span class="item-bg"><img class="logoMenu" src="img/Logo-standard.png" alt="Logotipo de Olho">
+            Configurações</span></h2>
+
+        <ul class="config-menu">
+          <li><span class="item-bg" id="zoomIn"><img src="img/increaseZoomIcon_standard.png" alt="Ícone de ajustar o Zoom"> Aumentar Zoom</span></li>
+          <li><span class="item-bg" id="zoomOut"><img src="img/decreaseZoomIcon_standard.png" alt="Ícone de ajustar o Zoom"> Diminuir Zoom</span></li>
+          <li><span class="item-bg" id="questionIcon"><img src="img/questionIcon_standard.png" alt="Ícone de dúvida"> Dúvidas comuns</span></li>
+          <li><span class="item-bg" id="infoIcon"><img src="img/infoIcon_standard.png" alt="Ícone de informações"> Mais informações</span></li>
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
