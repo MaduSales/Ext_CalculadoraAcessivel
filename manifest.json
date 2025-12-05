@@ -4,6 +4,17 @@
   "manifest_version": 3,
   "description": "Esta extensão serve para realizar cálculos simples.",
   "action": {
-    "default_popup": "index.html"
-    }
+    "default_popup": "index.html",
+    "default_icons": {
+      "16": "img/logo16px.png",
+      "48": "img/logo48px.png",
+      "128": "img/logo128px.png"
+      }
+    },
+    "icons": {
+      "16":"img/logo16px.png",
+      "48": "img/logo48px.png",
+      "128": "img/logo128px.png",
+      "300": "img/logo300px.png"
   }
+}
