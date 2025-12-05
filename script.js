@@ -17,6 +17,10 @@ const closeConfig = document.getElementById("closeConfig");
 const zoomIn = document.getElementById("zoomIn");
 const zoomOut = document.getElementById("zoomOut");
 const calculator = document.querySelector(".container-pai");
+const overlayDuvidas = document.getElementById('overlayDuvidas');
+const closeDuvidas = document.getElementById('closeDuvidas');
+const btnDuvidas = document.getElementById('questionIcon');
+const allQuestions = document.querySelectorAll('.question');
 
 
 let fontSize = 16;
@@ -138,5 +142,58 @@ zoomOut.addEventListener("click", function () {
     calculator.style.transformOrigin = "top center";
 
     moveCloseX(); 
+  }
+});
+
+// Função menu de dúvidas
+const toggleAnswer = (question) => {
+  if (question.classList.contains('active')) {
+    // Se já estava aberta, volta ao menu normal
+    allQuestions.forEach(q => {
+      q.style.display = "block";
+      q.classList.remove('active');
+    });
+  } else {
+    // Mostra apenas a pergunta selecionada
+    allQuestions.forEach(q => {
+      q.style.display = "none";
+      q.classList.remove('active');
+    });
+    question.style.display = "block";
+    question.classList.add('active');
+  }
+};
+
+// Evento de clique em cada pergunta
+allQuestions.forEach(question => {
+  question.addEventListener('click', () => toggleAnswer(question));
+});
+
+// Abrir overlay de dúvidas
+btnDuvidas.addEventListener('click', () => {
+  overlayDuvidas.classList.add('active');
+  allQuestions.forEach(q => {
+    q.style.display = "block"; // Todas visíveis ao abrir
+    q.classList.remove('active');
+  });
+});
+
+// Fechar overlay com X
+closeDuvidas.addEventListener('click', () => {
+  overlayDuvidas.classList.remove('active');
+  allQuestions.forEach(q => {
+    q.style.display = "block"; // Todas visíveis ao voltar ao menu
+    q.classList.remove('active');
+  });
+});
+
+// Fechar overlay clicando no fundo
+overlayDuvidas.addEventListener('click', (e) => {
+  if (e.target === overlayDuvidas) {
+    overlayDuvidas.classList.remove('active');
+    allQuestions.forEach(q => {
+      q.style.display = "block"; // Todas visíveis ao voltar ao menu
+      q.classList.remove('active');
+    });
   }
 });
