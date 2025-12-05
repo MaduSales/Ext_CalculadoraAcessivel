@@ -14,6 +14,13 @@ const equalButton = document.querySelector(".numbers-grid .equal");
 const configButton = document.getElementById("configIcon");
 const overlayConfig = document.getElementById("overlayConfig");
 const closeConfig = document.getElementById("closeConfig");
+const zoomIn = document.getElementById("zoomIn");
+const zoomOut = document.getElementById("zoomOut");
+const calculator = document.querySelector(".container-pai");
+
+
+let fontSize = 16;
+let scale = 1;
 
 function appendToInput(char) {
   inputText.value += char;
@@ -62,12 +69,74 @@ equalButton.addEventListener("click", () => {
   }
 });
 
-// ABRIR MENU
+// Função para abrir menu
 configButton.addEventListener("click", () => {
   overlayConfig.classList.add("active");
 });
 
-// FECHAR NO X
+// Fechar no X
 closeConfig.addEventListener("click", () => {
   overlayConfig.classList.remove("active");
+});
+
+overlayConfig.addEventListener("click", (e) => {
+  // Só fecha se clicar no fundo (overlay)
+  if (e.target === overlayConfig) {
+    overlayConfig.classList.remove("active");
+  }
+});
+
+
+
+// Lógica para dar zoom e tirar zoom no menu
+function moveCloseX() {
+  const baseRight = 12;
+
+  // Deslocamento proporcional ao zoom
+  const move = (scale - 1) * 150;
+
+  // Largura VISUAL (já escalada)
+  const visualWidth = calculator.getBoundingClientRect().width;
+
+  // Largura do X
+  const xWidth = closeConfig.offsetWidth;
+
+  // Limites seguros
+  const minRight = 12;
+  const maxRight = visualWidth - xWidth - 12;
+
+  // Posição final clampada
+  let finalRight = baseRight + move;
+  finalRight = Math.max(minRight, Math.min(finalRight, maxRight));
+
+  closeConfig.style.right = finalRight + "px";
+}
+
+// Zoom é aplicado na calculadora com limites
+zoomIn.addEventListener("click", function () {
+  if (scale < 1.4) {
+    scale += 0.1;
+    fontSize += 2;
+
+    calculator.style.transform = "scale(" + scale + ")";
+    calculator.style.fontSize = fontSize + "px";
+    calculator.style.transformOrigin = "top center";
+
+    moveCloseX();
+  }
+});
+
+
+// Zoom é retirado da calculadora com limites
+zoomOut.addEventListener("click", function () {
+  if (scale > 0.8) {
+    scale -= 0.1;
+    fontSize -= 2;
+
+    calculator.style.transform = "scale(" + scale + ")";
+    calculator.style.fontSize = fontSize + "px";
+    calculator.style.transformOrigin = "top center";
+
+    moveCloseX(); 
+  }
 });
