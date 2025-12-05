@@ -65,8 +65,40 @@ deleteButton.addEventListener("click", () => {
 // Função do botão Equal
 equalButton.addEventListener("click", () => {
   try {
-    // Calcula usando eval
-    const resultado = eval(inputText.value);
+    const input = inputText.value;
+
+    // Função para calcular manualmente
+    function calcular(expression) {
+      // Primeiro, separar números e operadores
+      const numeros = expression.split(/[\+\-\*\/]/).map(Number); // Converte para números
+      const operadores = expression.split('').filter(c => ['+', '-', '*', '/'].includes(c));
+
+      // Faz primeiro multiplicação e divisão
+      for (let i = 0; i < operadores.length; i++) {
+        if (operadores[i] === '*') {
+          numeros[i] = numeros[i] * numeros[i + 1];
+          numeros.splice(i + 1, 1);
+          operadores.splice(i, 1);
+          i--;
+        } else if (operadores[i] === '/') {
+          numeros[i] = numeros[i] / numeros[i + 1];
+          numeros.splice(i + 1, 1);
+          operadores.splice(i, 1);
+          i--;
+        }
+      }
+
+      // Depois soma e subtração
+      let resultado = numeros[0];
+      for (let i = 0; i < operadores.length; i++) {
+        if (operadores[i] === '+') resultado += numeros[i + 1];
+        else if (operadores[i] === '-') resultado -= numeros[i + 1];
+      }
+
+      return resultado;
+    }
+
+    const resultado = calcular(input);
     resultText.value = resultado;
   } catch (error) {
     resultText.value = "Erro";
@@ -89,7 +121,6 @@ overlayConfig.addEventListener("click", (e) => {
     overlayConfig.classList.remove("active");
   }
 });
-
 
 
 // Lógica para dar zoom e tirar zoom no menu
@@ -195,5 +226,102 @@ overlayDuvidas.addEventListener('click', (e) => {
       q.style.display = "block"; // Todas visíveis ao voltar ao menu
       q.classList.remove('active');
     });
+  }
+});
+
+// Função para mover o botão "X" do overlay de dúvidas
+function moveCloseDuvidas() {
+  const baseRight = 12;
+
+  // Deslocamento proporcional ao zoom
+  const move = (scale - 1) * 70;
+
+  // Largura VISUAL (já escalada)
+  const visualWidth = calculator.getBoundingClientRect().width;
+
+  // Largura do X
+  const xWidth = closeDuvidas.offsetWidth;
+
+  // Limites seguros
+  const minRight = 12;
+  const maxRight = visualWidth - xWidth - 12;
+
+  // Posição final clampada
+  let finalRight = baseRight + move;
+  finalRight = Math.max(minRight, Math.min(finalRight, maxRight));
+
+  closeDuvidas.style.right = finalRight + "px";
+}
+
+// Zoom é aplicado na calculadora com limites
+zoomIn.addEventListener("click", function () {
+  if (scale < 1.4) {
+    scale += 0.1;
+    fontSize += 2;
+
+    calculator.style.transform = "scale(" + scale + ")";
+    calculator.style.fontSize = fontSize + "px";
+    calculator.style.transformOrigin = "top center";
+
+    moveCloseX();  // Mover o "X" do botão de configuração
+    moveCloseDuvidas();  // Mover o "X" do botão de dúvidas
+  }
+});
+
+// Zoom é retirado da calculadora com limites
+zoomOut.addEventListener("click", function () {
+  if (scale > 0.8) {
+    scale -= 0.1;
+    fontSize -= 2;
+
+    calculator.style.transform = "scale(" + scale + ")";
+    calculator.style.fontSize = fontSize + "px";
+    calculator.style.transformOrigin = "top center";
+
+    moveCloseX(); // Mover o "X" do botão de configuração
+    moveCloseDuvidas(); // Mover o "X" do botão de dúvidas
+  }
+});
+
+
+// Função para ajustar o padding-left dos inputs conforme o zoom
+function adjustInputPaddingLeft() {
+  const inputs = document.querySelectorAll("input, textarea"); 
+  
+  // Calcula o novo padding-left proporcional ao zoom
+  const newPaddingLeft = 30 * scale;  
+
+  // Aplica o novo padding-left a todos os inputs
+  inputs.forEach(input => {
+    input.style.paddingLeft = `${newPaddingLeft}px`; 
+  });
+}
+
+// Função para aplicar o zoom e ajustar o padding-left
+zoomIn.addEventListener("click", function () {
+  if (scale < 1.4) {
+    scale += 0.1;
+    fontSize += 2;
+
+    calculator.style.transform = "scale(" + scale + ")";
+    calculator.style.fontSize = fontSize + "px";
+    calculator.style.transformOrigin = "top center";
+
+    moveCloseX();
+    adjustInputPaddingLeft();  
+  }
+});
+
+zoomOut.addEventListener("click", function () {
+  if (scale > 0.8) {
+    scale -= 0.1;
+    fontSize -= 2;
+
+    calculator.style.transform = "scale(" + scale + ")";
+    calculator.style.fontSize = fontSize + "px";
+    calculator.style.transformOrigin = "top center";
+
+    moveCloseX();
+    adjustInputPaddingLeft(); 
   }
 });

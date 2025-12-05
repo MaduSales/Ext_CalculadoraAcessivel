@@ -59,11 +59,27 @@
   border: none;
   background-color: var(--bg-inputs-standard);
   resize: none;
+  color: var(--bg-inputs-dark);
+  font-weight: 700;
+}
+
+.cabecalho input::placeholder,
+.cabecalho textarea::placeholder{
+  color: var(--bg-inputs-dark);
+  font-weight: 600;
+}
+
+.dark .cabecalho input::placeholder,
+.dark .cabecalho textarea::placeholder{
+  color: var(--fc-questionMenuDark);
+  font-weight: 600;
 }
 
 .dark .cabecalho input,
 .dark .cabecalho textarea {
   background-color: var(--bg-inputs-dark);
+  color: var(--fc-questionMenuDark);
+  font-weight: 700;
 }
 
 .cabecalho input {
