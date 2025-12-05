@@ -1,10 +1,4 @@
 const themeBtn = document.getElementById("themeIcon");
-
-themeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-});
-
-
 const inputText = document.getElementById("input-text");
 const resultText = document.getElementById("result");
 const numberButtons = document.querySelectorAll(".numbers-grid button:not(.del):not(.equal)"); //Todos os botões, exceto DELETE e EQUAL
@@ -23,9 +17,18 @@ const btnDuvidas = document.getElementById('questionIcon');
 const allQuestions = document.querySelectorAll('.question');
 
 
+// Variáveis utilizadas na função de Zoom
 let fontSize = 16;
 let scale = 1;
 
+
+// Função para mudar tema
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
+
+// Função que adiciona caracteres ao inputText
 function appendToInput(char) {
   inputText.value += char;
 }
@@ -253,7 +256,7 @@ function moveCloseDuvidas() {
   closeDuvidas.style.right = finalRight + "px";
 }
 
-// Zoom é aplicado na calculadora com limites
+// Zoom é aplicado no overlay de dúvidas com limites
 zoomIn.addEventListener("click", function () {
   if (scale < 1.4) {
     scale += 0.1;
@@ -268,7 +271,7 @@ zoomIn.addEventListener("click", function () {
   }
 });
 
-// Zoom é retirado da calculadora com limites
+// Zoom é retirado do overlay de dúvidas com limites
 zoomOut.addEventListener("click", function () {
   if (scale > 0.8) {
     scale -= 0.1;
